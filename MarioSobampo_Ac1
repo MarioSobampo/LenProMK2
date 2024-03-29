@@ -1,0 +1,24 @@
+/******************************************************************************
+
+Actividad number 1.
+Determine si la persona que introduce su edad es mayor o menor de edad
+Mario Sobampo MK
+
+*******************************************************************************/
+#include <stdio.h>
+#include <iostream>
+
+int main()
+{
+    int edad;
+    std::cout << "ingresa tu edad provador Sr(a): ";
+    std::cin >> edad;
+    
+    if (edad >= 18){
+        std::cout << "caballero/dama usted es mayor de edad" << std::endl;
+    }
+    else {
+        std:: cout << "Joven usted ta chiquit@" << std:: endl;
+    }
+    return 0;
+}
