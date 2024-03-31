@@ -1,0 +1,65 @@
+/******************************************************************************
+
+Actividad 3 
+Calculo del RFC 
+Mario Sobampo MK3
+
+*******************************************************************************/
+#include <iostream>
+#include <stdio.h>
+
+char PrimerVocalApePat(const std::string& str){
+    for(size_t i=1; i<str.length(); i++){
+        char c=str[i];
+        if (c=='A' || c=='E'||c=='I'||c=='O'||c=='U'||c=='a' || c=='e'||c=='i'||c=='o'||c=='u')
+        return c;
+    }
+    return 'X';
+}
+
+std::string calcularRFC(const std::string& nombre, const std::string& apellidoP, const std::string& apellidoM, const std::string& fechaN){
+    std :: string RFC;
+    
+    char Linicial=apellidoP[0];
+    char PriVocal=PrimerVocalApePat(apellidoP);
+    
+    char IapellidoM=(!apellidoM.empty()) ? apellidoM[0]:'X';
+    
+    char Inombre=nombre[0];
+    
+    std::string year= fechaN.substr(2,2);
+    
+    std::string mes=fechaN.substr(5,2);
+    
+    std::string dia=fechaN.substr(8,2);
+    
+    RFC = Linicial;
+    RFC +=PriVocal;
+    RFC +=IapellidoM;
+    RFC +=Inombre;
+    RFC +=year;
+    RFC +=mes;
+    RFC +=dia;
+    
+    return RFC;
+}
+
+int main()
+{
+    std::string nombre, apellidoP, apellidoM, fechaN;
+    
+    std::cout<<"---------Bienvenido al Calculo del RFC---------------\n";
+    std::cout<<"Favor de ingresar su primer nombre: \n";
+    std::getline(std::cin, nombre);
+    std::cout<<"Favor de ingresar su Apellido Paterno: \n";
+    std::getline(std::cin, apellidoP);
+    std::cout<<"Favor de ingresar su Apellido Materno: \n";
+    std::getline(std::cin, apellidoM);
+    std::cout<<"Favor de ingresar su Feha de Nacimiento(yyyy-mm-dd): \n";
+    std::getline(std::cin, fechaN);
+    
+    std::string RFC = calcularRFC(nombre,apellidoP,apellidoM,fechaN);
+    std::cout<<"-----------------------------------------------------\n";
+    std::cout<<"Listo, su RFC es: -->> "<< RFC <<"XXX <<--"<<std::endl;
+    return 0;
+}
